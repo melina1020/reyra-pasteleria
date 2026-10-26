@@ -41,7 +41,7 @@
         .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
     </style>
 </head>
-<body class="bg-brand-cream text-brand-choco antialiased flex flex-col min-h-screen pb-24 md:pb-0">
+<body class="bg-brand-cream text-brand-choco antialiased flex flex-col min-h-screen pb-24 md:pb-0 overflow-x-hidden">
 
     <!-- Top Announcement Bar -->
     <div class="bg-brand-choco text-brand-pink text-xs text-center py-2 px-4 font-medium flex justify-center items-center gap-2">
@@ -143,7 +143,6 @@
                     ¿Tenés una idea en mente o un diseño de Pinterest? Completá este formulario y mandanos la referencia directamente a WhatsApp para cotizarte al instante.
                 </p>
             </div>
-
             <form id="custom-cake-form" onsubmit="handleCustomCake(event)" class="space-y-4">
                 <div>
                     <label class="block text-xs font-bold text-brand-choco uppercase mb-1">Descripción de la Torta</label>
