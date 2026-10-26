@@ -103,30 +103,15 @@
         </div>
     </section>
 
-    <!-- Seccion Principal / Menú de Productos (Contenida estrictamente) -->
+    <!-- Seccion Principal / Menú de Productos (Sin los botones de categorías molestos) -->
     <section id="menu" class="w-full py-8 px-4 flex-grow">
         <div class="max-w-md sm:max-w-2xl lg:max-w-6xl mx-auto w-full">
-            
-            <!-- Filtros de Categorías (Ordenados en columna/wrap para evitar desborde) -->
-            <div class="flex flex-wrap justify-center gap-2 pb-6 mb-4 w-full">
-                <button onclick="filterCategory('all')" class="cat-btn active border border-brand-rose/30 bg-brand-choco text-white px-3 py-2 rounded-full text-xs font-bold transition">
-                    Todos
-                </button>
-                <button onclick="filterCategory('cookies')" class="cat-btn border border-brand-rose/30 bg-white text-brand-choco px-3 py-2 rounded-full text-xs font-bold hover:bg-brand-pink transition">
-                    🍪 Cookies NY
-                </button>
-                <button onclick="filterCategory('tortas')" class="cat-btn border border-brand-rose/30 bg-white text-brand-choco px-3 py-2 rounded-full text-xs font-bold hover:bg-brand-pink transition">
-                    🎂 Tortas
-                </button>
-                <button onclick="filterCategory('boxes')" class="cat-btn border border-brand-rose/30 bg-white text-brand-choco px-3 py-2 rounded-full text-xs font-bold hover:bg-brand-pink transition">
-                    📦 Boxes
-                </button>
-                <button onclick="filterCategory('clasicos')" class="cat-btn border border-brand-rose/30 bg-white text-brand-choco px-3 py-2 rounded-full text-xs font-bold hover:bg-brand-pink transition">
-                    🍰 Clásicos
-                </button>
+            <div class="text-center mb-6">
+                <h2 class="text-2xl font-bold font-serif text-brand-choco">Nuestros Productos</h2>
+                <p class="text-xs text-gray-500">Elegí lo que más te guste y hacé tu pedido al instante</p>
             </div>
 
-            <!-- Grid de Productos Centrado y Estricto -->
+            <!-- Grid de Productos Centrado -->
             <div id="product-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 w-full justify-items-center">
                 <!-- Se renderiza por JS -->
             </div>
@@ -229,7 +214,6 @@
             {
                 id: 1,
                 name: "Cookie NY Red Velvet & Chocolate",
-                category: "cookies",
                 price: 1800,
                 desc: "Gigante, húmeda, rellena con chips de chocolate blanco.",
                 img: "https://images.unsplash.com/photo-1558961363-fa8fdf82db35?auto=format&fit=crop&w=400&q=80"
@@ -237,7 +221,6 @@
             {
                 id: 2,
                 name: "Cookie NY Rellena Nutella",
-                category: "cookies",
                 price: 2000,
                 desc: "Masa clásica de vainilla rellena con abundante Nutella.",
                 img: "https://images.unsplash.com/photo-1499636136210-6f4ee915583e?auto=format&fit=crop&w=400&q=80"
@@ -245,7 +228,6 @@
             {
                 id: 3,
                 name: "Torta Temática 'RIP 20 / Hello 30'",
-                category: "tortas",
                 price: 22000,
                 desc: "Diseño dividido mitad rosa y mitad negro. Buttercream y bizcochuelo húmedo.",
                 img: "https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=400&q=80"
@@ -253,7 +235,6 @@
             {
                 id: 4,
                 name: "Box Especial Combinado (Dulce & Salado)",
-                category: "boxes",
                 price: 18500,
                 desc: "Incluye Torta Brownie, 2 medialunas con DDL y porción de Tiramisú.",
                 img: "https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=400&q=80"
@@ -261,7 +242,6 @@
             {
                 id: 5,
                 name: "Porción Cheesecake de Frutos Rojos",
-                category: "clasicos",
                 price: 3200,
                 desc: "Base crocante, crema suave y coulis artesanal.",
                 img: "https://images.unsplash.com/photo-1533134242443-d4fd215305ad?auto=format&fit=crop&w=400&q=80"
@@ -269,7 +249,6 @@
             {
                 id: 6,
                 name: "Caja x6 Medialunas Artesanales",
-                category: "clasicos",
                 price: 4500,
                 desc: "Listas para retirar los Sábados o pedir envío rápido.",
                 img: "https://images.unsplash.com/photo-1555507036-ab1f4038808a?auto=format&fit=crop&w=400&q=80"
@@ -278,17 +257,12 @@
 
         let cart = [];
         let currentMode = 'fast';
-        let currentCategory = 'all';
 
         function renderProducts() {
             const grid = document.getElementById('product-grid');
             grid.innerHTML = '';
 
-            const filtered = products.filter(p => {
-                return currentCategory === 'all' || p.category === currentCategory;
-            });
-
-            filtered.forEach(p => {
+            products.forEach(p => {
                 grid.innerHTML += `
                     <div class="bg-white rounded-2xl border border-brand-rose/20 overflow-hidden shadow-sm flex flex-col hover:shadow-md transition w-full max-w-xs sm:max-w-sm">
                         <img src="${p.img}" alt="${p.name}" class="w-full h-40 object-cover">
@@ -320,17 +294,6 @@
                 btnSchedule.className = "flex-1 py-2.5 px-3 rounded-xl text-xs md:text-sm font-bold flex items-center justify-center gap-2 transition bg-brand-choco text-white";
                 btnFast.className = "flex-1 py-2.5 px-3 rounded-xl text-xs md:text-sm font-bold flex items-center justify-center gap-2 transition text-gray-500 hover:text-brand-choco";
             }
-        }
-
-        function filterCategory(cat) {
-            currentCategory = cat;
-            document.querySelectorAll('.cat-btn').forEach(btn => {
-                btn.classList.remove('bg-brand-choco', 'text-white');
-                btn.classList.add('bg-white', 'text-brand-choco');
-            });
-            event.target.classList.remove('bg-white', 'text-brand-choco');
-            event.target.classList.add('bg-brand-choco', 'text-white');
-            renderProducts();
         }
 
         function addToCart(id) {
