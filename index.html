@@ -269,7 +269,7 @@
                 category: "tortas",
                 price: 22000,
                 desc: "Diseño dividido mitad rosa y mitad negro. Buttercream y bizcochuelo húmedo.",
-                img: "https://images.unsplash.com/photo-1535141192574-5d4897c13136?auto=format&fit=crop&w=400&q=80",
+                img: "https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=400&q=80",
                 mode: "schedule"
             },
             {
@@ -317,7 +317,7 @@
             filtered.forEach(p => {
                 grid.innerHTML += `
                     <div class="bg-white rounded-2xl border border-brand-rose/20 overflow-hidden shadow-sm flex flex-col hover:shadow-md transition">
-                        <img src="${p.img}" alt="${p.name}" class="w-full h-48 object-cover">
+                        <img src="${p.img}" alt="${p.name}" class="w-full h-40 sm:h-48 object-cover">
                         <div class="p-4 flex flex-col flex-grow">
                             <div class="flex justify-between items-start mb-2">
                                 <h3 class="font-bold text-brand-choco text-sm">${p.name}</h3>
