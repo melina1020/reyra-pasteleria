@@ -35,23 +35,20 @@
     <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+        * { box-sizing: border-box; }
+        body { font-family: 'Plus Jakarta Sans', sans-serif; overflow-x: hidden; width: 100%; margin: 0; padding: 0; }
         h1, h2, h3, .font-serif { font-family: 'Playfair Display', serif; }
-        .hide-scrollbar::-webkit-scrollbar { display: none; }
-        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
     </style>
 </head>
 <body class="bg-brand-cream text-brand-choco antialiased flex flex-col min-h-screen pb-24 md:pb-0 overflow-x-hidden">
 
     <!-- Top Announcement Bar -->
-    <div class="bg-brand-choco text-brand-pink text-xs text-center py-2 px-4 font-medium flex justify-center items-center gap-2">
+    <div class="bg-brand-choco text-brand-pink text-xs text-center py-2 px-4 font-medium flex justify-center items-center gap-2 w-full">
         <span>📍 Venta al público los Sábados en J. M. de Estrada 305, Florencio Varela</span>
-        <span class="hidden md:inline">•</span>
-        <span class="hidden md:inline">🍪 ¡Cookies NY recién horneadas!</span>
     </div>
 
     <!-- Header / Navbar -->
-    <header class="sticky top-0 z-40 bg-brand-cream/90 backdrop-blur-md border-b border-brand-rose/20">
+    <header class="sticky top-0 z-40 bg-brand-cream/90 backdrop-blur-md border-b border-brand-rose/20 w-full">
         <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
             <a href="#" class="flex items-center gap-2">
                 <div class="w-10 h-10 rounded-full bg-brand-rose text-white flex items-center justify-center font-serif text-xl font-bold">R</div>
@@ -78,7 +75,7 @@
     </header>
 
     <!-- Hero Section -->
-    <section class="relative bg-gradient-to-b from-brand-pink/50 to-brand-cream pt-8 pb-12 px-4">
+    <section class="relative bg-gradient-to-b from-brand-pink/50 to-brand-cream pt-8 pb-12 px-4 w-full">
         <div class="max-w-4xl mx-auto text-center space-y-4">
             <span class="inline-block bg-white border border-brand-rose/30 text-brand-darkRose text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">
                 Pastelería de Autor & Eventos
@@ -90,65 +87,66 @@
                 Cookies estilo New York, tortas temáticas personalizadas y boxes especiales para regalar o regalarte.
             </p>
 
-            <!-- Selector de Modalidad (Envíos Rápidos vs Programar) -->
-            <div class="pt-4 max-w-md mx-auto">
-                <div class="bg-white p-1.5 rounded-2xl shadow-sm border border-brand-rose/20 flex gap-1">
+            <!-- Selector de Modalidad -->
+            <div class="pt-4 max-w-md mx-auto w-full">
+                <div class="bg-white p-1.5 rounded-2xl shadow-sm border border-brand-rose/20 flex gap-1 w-full">
                     <button id="mode-fast" onclick="setMode('fast')" class="flex-1 py-2.5 px-3 rounded-xl text-xs md:text-sm font-bold flex items-center justify-center gap-2 transition bg-brand-choco text-white">
                         <i class="fa-solid fa-bolt text-brand-gold"></i>
-                        Envíos Rápidos / Hoy
+                        Envíos Rápidos
                     </button>
                     <button id="mode-schedule" onclick="setMode('schedule')" class="flex-1 py-2.5 px-3 rounded-xl text-xs md:text-sm font-bold flex items-center justify-center gap-2 transition text-gray-500 hover:text-brand-choco">
                         <i class="fa-regular fa-calendar-check"></i>
-                        Programar Pedido
+                        Programar
                     </button>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Seccion Principal / Menú de Productos -->
-    <section id="menu" class="max-w-6xl mx-auto px-4 py-8 flex-grow w-full">
-        <div class="max-w-md sm:max-w-xl lg:max-w-none mx-auto">
-            <!-- Filtros de Categorías (Alineados y contenidos correctamente) -->
-            <div class="flex flex-wrap justify-center gap-2 pb-6 mb-2">
-                <button onclick="filterCategory('all')" class="cat-btn active border border-brand-rose/30 bg-brand-choco text-white px-4 py-2 rounded-full text-xs font-bold transition">
-                    Todos los Productos
+    <!-- Seccion Principal / Menú de Productos (Contenida estrictamente) -->
+    <section id="menu" class="w-full py-8 px-4 flex-grow">
+        <div class="max-w-md sm:max-w-2xl lg:max-w-6xl mx-auto w-full">
+            
+            <!-- Filtros de Categorías (Ordenados en columna/wrap para evitar desborde) -->
+            <div class="flex flex-wrap justify-center gap-2 pb-6 mb-4 w-full">
+                <button onclick="filterCategory('all')" class="cat-btn active border border-brand-rose/30 bg-brand-choco text-white px-3 py-2 rounded-full text-xs font-bold transition">
+                    Todos
                 </button>
-                <button onclick="filterCategory('cookies')" class="cat-btn border border-brand-rose/30 bg-white text-brand-choco px-4 py-2 rounded-full text-xs font-bold hover:bg-brand-pink transition">
+                <button onclick="filterCategory('cookies')" class="cat-btn border border-brand-rose/30 bg-white text-brand-choco px-3 py-2 rounded-full text-xs font-bold hover:bg-brand-pink transition">
                     🍪 Cookies NY
                 </button>
-                <button onclick="filterCategory('tortas')" class="cat-btn border border-brand-rose/30 bg-white text-brand-choco px-4 py-2 rounded-full text-xs font-bold hover:bg-brand-pink transition">
-                    🎂 Tortas Temáticas
+                <button onclick="filterCategory('tortas')" class="cat-btn border border-brand-rose/30 bg-white text-brand-choco px-3 py-2 rounded-full text-xs font-bold hover:bg-brand-pink transition">
+                    🎂 Tortas
                 </button>
-                <button onclick="filterCategory('boxes')" class="cat-btn border border-brand-rose/30 bg-white text-brand-choco px-4 py-2 rounded-full text-xs font-bold hover:bg-brand-pink transition">
-                    📦 Boxes Especiales
+                <button onclick="filterCategory('boxes')" class="cat-btn border border-brand-rose/30 bg-white text-brand-choco px-3 py-2 rounded-full text-xs font-bold hover:bg-brand-pink transition">
+                    📦 Boxes
                 </button>
-                <button onclick="filterCategory('clasicos')" class="cat-btn border border-brand-rose/30 bg-white text-brand-choco px-4 py-2 rounded-full text-xs font-bold hover:bg-brand-pink transition">
-                    🍰 Porciones & Clásicos
+                <button onclick="filterCategory('clasicos')" class="cat-btn border border-brand-rose/30 bg-white text-brand-choco px-3 py-2 rounded-full text-xs font-bold hover:bg-brand-pink transition">
+                    🍰 Clásicos
                 </button>
             </div>
 
-            <!-- Grid de Productos Centrado -->
-            <div id="product-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 justify-items-center">
-                <!-- Los productos se renderizan dinámicamente con JS -->
+            <!-- Grid de Productos Centrado y Estricto -->
+            <div id="product-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 w-full justify-items-center">
+                <!-- Se renderiza por JS -->
             </div>
         </div>
     </section>
 
-    <!-- Creador de Tortas a Medida ("Diseñá tu Torta") -->
-    <section id="custom-cake" class="bg-brand-pink/40 border-y border-brand-rose/20 py-12 px-4 my-8">
-        <div class="max-w-3xl mx-auto bg-white rounded-3xl p-6 md:p-8 shadow-sm border border-brand-rose/30">
+    <!-- Creador de Tortas a Medida -->
+    <section id="custom-cake" class="bg-brand-pink/40 border-y border-brand-rose/20 py-12 px-4 my-8 w-full">
+        <div class="max-w-3xl mx-auto bg-white rounded-3xl p-6 md:p-8 shadow-sm border border-brand-rose/30 w-full">
             <div class="text-center space-y-2 mb-6">
                 <span class="text-brand-darkRose font-bold text-xs uppercase tracking-wider">Servicio Personalizado</span>
                 <h2 class="text-2xl md:text-3xl font-bold text-brand-choco">Diseñá tu Torta de Cumpleaños</h2>
                 <p class="text-xs md:text-sm text-gray-600">
-                    ¿Tenés una idea en mente o un diseño de Pinterest? Completá este formulario y mandanos la referencia directamente a WhatsApp para cotizarte al instante.
+                    Completá este formulario y mandanos la referencia directamente a WhatsApp para cotizarte al instante.
                 </p>
             </div>
             <form id="custom-cake-form" onsubmit="handleCustomCake(event)" class="space-y-4">
                 <div>
                     <label class="block text-xs font-bold text-brand-choco uppercase mb-1">Descripción de la Torta</label>
-                    <textarea id="cake-desc" required rows="3" placeholder="Ej: Torta estilo 'RIP 20 / Hello 30' dividida a la mitad en rosa y negro. Relleno de buttercream y dulce de leche..." class="w-full text-sm p-3 rounded-xl border border-gray-200 focus:outline-none focus:border-brand-darkRose"></textarea>
+                    <textarea id="cake-desc" required rows="3" placeholder="Ej: Torta estilo 'RIP 20 / Hello 30'..." class="w-full text-sm p-3 rounded-xl border border-gray-200 focus:outline-none focus:border-brand-darkRose"></textarea>
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -157,18 +155,13 @@
                         <input type="date" id="cake-date" required class="w-full text-sm p-3 rounded-xl border border-gray-200 focus:outline-none focus:border-brand-darkRose">
                     </div>
                     <div>
-                        <label class="block text-xs font-bold text-brand-choco uppercase mb-1">Porciones / Personas aprox.</label>
+                        <label class="block text-xs font-bold text-brand-choco uppercase mb-1">Porciones</label>
                         <select id="cake-portions" class="w-full text-sm p-3 rounded-xl border border-gray-200 focus:outline-none focus:border-brand-darkRose">
                             <option value="10 a 12 personas">10 a 12 personas</option>
                             <option value="15 a 20 personas">15 a 20 personas</option>
-                            <option value="25+ personas">25+ personas (Evento grande)</option>
+                            <option value="25+ personas">25+ personas</option>
                         </select>
                     </div>
-                </div>
-
-                <div class="bg-brand-cream p-4 rounded-xl text-xs text-gray-600 border border-brand-rose/20 flex items-center gap-3">
-                    <i class="fa-solid fa-camera text-brand-darkRose text-lg"></i>
-                    <span><strong>Nota:</strong> Al presionar el botón se abrirá WhatsApp con los datos. Podrás adjuntar la foto o captura de pantalla de la torta que te gusta directamente en el chat.</span>
                 </div>
 
                 <button type="submit" class="w-full bg-brand-darkRose text-white font-bold py-3.5 px-6 rounded-xl text-sm flex items-center justify-center gap-2 hover:bg-brand-choco transition shadow-md">
@@ -180,20 +173,16 @@
     </section>
 
     <!-- Info del Local y Sábados -->
-    <section id="sabados" class="max-w-4xl mx-auto px-4 py-8 my-4">
-        <div class="bg-brand-choco text-white rounded-3xl p-6 md:p-8 flex flex-col md:flex-row items-center justify-between gap-6">
+    <section id="sabados" class="max-w-4xl mx-auto px-4 py-8 my-4 w-full">
+        <div class="bg-brand-choco text-white rounded-3xl p-6 md:p-8 flex flex-col md:flex-row items-center justify-between gap-6 w-full">
             <div class="space-y-3 text-center md:text-left">
                 <span class="bg-brand-gold/20 text-brand-gold text-xs font-bold px-3 py-1 rounded-full border border-brand-gold/30">
                     Venta al Público
                 </span>
                 <h3 class="text-2xl font-bold font-serif">Pasá por el local los Sábados</h3>
                 <p class="text-xs md:text-sm text-gray-300 max-w-md">
-                    Medialunas calentitas, porciones frescas y retiro de pedidos programados.
+                    José Manuel de Estrada 305, Florencio Varela.
                 </p>
-                <div class="text-xs text-brand-pink space-y-1">
-                    <p><i class="fa-solid fa-location-dot mr-1"></i> José Manuel de Estrada 305, Florencio Varela</p>
-                    <p><i class="fa-regular fa-clock mr-1"></i> Abiertos todos los Sábados</p>
-                </div>
             </div>
             <a href="https://maps.google.com" target="_blank" class="bg-white text-brand-choco font-bold px-6 py-3 rounded-full text-xs hover:bg-brand-pink transition whitespace-nowrap">
                 Ver en Google Maps
@@ -202,18 +191,14 @@
     </section>
 
     <!-- Footer -->
-    <footer class="bg-white border-t border-brand-rose/20 py-8 px-4 text-center text-xs text-gray-500 space-y-2">
+    <footer class="bg-white border-t border-brand-rose/20 py-8 px-4 text-center text-xs text-gray-500 space-y-2 w-full">
         <p class="font-serif text-sm font-bold text-brand-choco">Reyra Pastelería</p>
         <p>Florencio Varela, Buenos Aires</p>
-        <p class="text-[10px] text-gray-400 pt-4">Demo desarrollada para Reyra Pastelería por MR Digital</p>
     </footer>
 
     <!-- Slide-over Cart Panel -->
     <div id="cart-panel" class="fixed inset-0 z-50 invisible transition-all duration-300">
-        <!-- Backdrop -->
         <div onclick="toggleCart()" class="absolute inset-0 bg-black/40 backdrop-blur-sm"></div>
-
-        <!-- Panel -->
         <div class="absolute right-0 top-0 bottom-0 w-full max-w-md bg-white shadow-2xl flex flex-col transform translate-x-full transition-transform duration-300" id="cart-content">
             <div class="p-4 border-b border-gray-100 flex items-center justify-between bg-brand-cream">
                 <div class="flex items-center gap-2">
@@ -224,13 +209,7 @@
                     <i class="fa-solid fa-xmark text-lg"></i>
                 </button>
             </div>
-
-            <!-- Cart Items -->
-            <div id="cart-items" class="flex-grow overflow-y-auto p-4 space-y-3">
-                <!-- Se llena dinámicamente -->
-            </div>
-
-            <!-- Cart Footer -->
+            <div id="cart-items" class="flex-grow overflow-y-auto p-4 space-y-3"></div>
             <div class="p-4 border-t border-gray-100 bg-brand-pink/20 space-y-3">
                 <div class="flex justify-between text-sm font-bold text-brand-choco">
                     <span>Total Estimado:</span>
@@ -244,7 +223,7 @@
         </div>
     </div>
 
-    <!-- Script de Funcionamiento -->
+    <!-- Script -->
     <script>
         const products = [
             {
@@ -253,8 +232,7 @@
                 category: "cookies",
                 price: 1800,
                 desc: "Gigante, húmeda, rellena con chips de chocolate blanco.",
-                img: "https://images.unsplash.com/photo-1558961363-fa8fdf82db35?auto=format&fit=crop&w=400&q=80",
-                mode: "fast"
+                img: "https://images.unsplash.com/photo-1558961363-fa8fdf82db35?auto=format&fit=crop&w=400&q=80"
             },
             {
                 id: 2,
@@ -262,8 +240,7 @@
                 category: "cookies",
                 price: 2000,
                 desc: "Masa clásica de vainilla rellena con abundante Nutella.",
-                img: "https://images.unsplash.com/photo-1499636136210-6f4ee915583e?auto=format&fit=crop&w=400&q=80",
-                mode: "fast"
+                img: "https://images.unsplash.com/photo-1499636136210-6f4ee915583e?auto=format&fit=crop&w=400&q=80"
             },
             {
                 id: 3,
@@ -271,17 +248,15 @@
                 category: "tortas",
                 price: 22000,
                 desc: "Diseño dividido mitad rosa y mitad negro. Buttercream y bizcochuelo húmedo.",
-                img: "https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=400&q=80",
-                mode: "schedule"
+                img: "https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=400&q=80"
             },
             {
                 id: 4,
                 name: "Box Especial Combinado (Dulce & Salado)",
                 category: "boxes",
                 price: 18500,
-                desc: "Incluye Torta Brownie, 2 medialunas con DDL, panqueques de J&Q y porción de Tiramisú.",
-                img: "https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=400&q=80",
-                mode: "schedule"
+                desc: "Incluye Torta Brownie, 2 medialunas con DDL y porción de Tiramisú.",
+                img: "https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=400&q=80"
             },
             {
                 id: 5,
@@ -289,8 +264,7 @@
                 category: "clasicos",
                 price: 3200,
                 desc: "Base crocante, crema suave y coulis artesanal.",
-                img: "https://images.unsplash.com/photo-1533134242443-d4fd215305ad?auto=format&fit=crop&w=400&q=80",
-                mode: "fast"
+                img: "https://images.unsplash.com/photo-1533134242443-d4fd215305ad?auto=format&fit=crop&w=400&q=80"
             },
             {
                 id: 6,
@@ -298,8 +272,7 @@
                 category: "clasicos",
                 price: 4500,
                 desc: "Listas para retirar los Sábados o pedir envío rápido.",
-                img: "https://images.unsplash.com/photo-1555507036-ab1f4038808a?auto=format&fit=crop&w=400&q=80",
-                mode: "fast"
+                img: "https://images.unsplash.com/photo-1555507036-ab1f4038808a?auto=format&fit=crop&w=400&q=80"
             }
         ];
 
@@ -312,14 +285,13 @@
             grid.innerHTML = '';
 
             const filtered = products.filter(p => {
-                const matchCategory = currentCategory === 'all' || p.category === currentCategory;
-                return matchCategory;
+                return currentCategory === 'all' || p.category === currentCategory;
             });
 
             filtered.forEach(p => {
                 grid.innerHTML += `
-                    <div class="bg-white rounded-2xl border border-brand-rose/20 overflow-hidden shadow-sm flex flex-col hover:shadow-md transition w-full max-w-xs sm:max-w-none">
-                        <img src="${p.img}" alt="${p.name}" class="w-full h-40 sm:h-44 object-cover">
+                    <div class="bg-white rounded-2xl border border-brand-rose/20 overflow-hidden shadow-sm flex flex-col hover:shadow-md transition w-full max-w-xs sm:max-w-sm">
+                        <img src="${p.img}" alt="${p.name}" class="w-full h-40 object-cover">
                         <div class="p-4 flex flex-col flex-grow">
                             <div class="flex justify-between items-start mb-2 gap-2">
                                 <h3 class="font-bold text-brand-choco text-sm leading-snug">${p.name}</h3>
@@ -436,30 +408,28 @@
             const date = document.getElementById('cake-date').value;
             const portions = document.getElementById('cake-portions').value;
 
-            const msg = `¡Hola Reyra Pastelería! 🎂 Quisiera pedir un presupuesto para una torta personalizada:\n\n` +
+            const msg = `¡Hola Reyra Pastelería! 🎂 Quisiera pedir un presupuesto:\n\n` +
                         `• *Descripción:* ${desc}\n` +
-                        `• *Fecha del evento:* ${date}\n` +
-                        `• *Porciones:* ${portions}\n\n` +
-                        `(A continuación te adjunto la foto de referencia)`;
+                        `• *Fecha:* ${date}\n` +
+                        `• *Porciones:* ${portions}`;
 
             window.open(`https://wa.me/?text=${encodeURIComponent(msg)}`, '_blank');
         }
 
         function sendOrderWhatsApp() {
             if(cart.length === 0) return;
-            let msg = `¡Hola Reyra Pastelería! 🥐 Quisiera realizar el siguiente pedido (${currentMode === 'fast' ? 'Envío Rápido / Retiro Hoy' : 'Programado'}):\n\n`;
+            let msg = `¡Hola Reyra Pastelería! 🥐 Pedido (${currentMode === 'fast' ? 'Rápido' : 'Programado'}):\n\n`;
             
             cart.forEach(item => {
                 msg += `• ${item.qty}x ${item.name} ($${item.price * item.qty})\n`;
             });
 
             const total = cart.reduce((acc, item) => acc + (item.price * item.qty), 0);
-            msg += `\n*Total Estimado:* $${total}`;
+            msg += `\n*Total:* $${total}`;
 
             window.open(`https://wa.me/?text=${encodeURIComponent(msg)}`, '_blank');
         }
 
-        // Init
         renderProducts();
     </script>
 </body>
