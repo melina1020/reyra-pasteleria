@@ -107,9 +107,9 @@
     </section>
 
     <!-- Seccion Principal / Menú de Productos -->
-    <section id="menu" class="max-w-6xl mx-auto px-4 py-8 flex-grow">
+    <section id="menu" class="max-w-6xl mx-auto px-4 py-8 flex-grow w-full">
         <!-- Filtros de Categorías -->
-        <div class="flex gap-2 overflow-x-auto hide-scrollbar pb-4 mb-6">
+        <div class="flex gap-2 overflow-x-auto hide-scrollbar pb-4 mb-6 w-full">
             <button onclick="filterCategory('all')" class="cat-btn active border border-brand-rose/30 bg-brand-choco text-white px-4 py-2 rounded-full text-xs font-bold whitespace-nowrap transition">
                 Todos los Productos
             </button>
@@ -128,7 +128,7 @@
         </div>
 
         <!-- Grid de Productos -->
-        <div id="product-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div id="product-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 w-full">
             <!-- Los productos se renderizan dinámicamente con JS -->
         </div>
     </section>
@@ -316,7 +316,7 @@
 
             filtered.forEach(p => {
                 grid.innerHTML += `
-                    <div class="bg-white rounded-2xl border border-brand-rose/20 overflow-hidden shadow-sm flex flex-col hover:shadow-md transition w-full max-w-sm mx-auto sm:max-w-none">
+                    <div class="bg-white rounded-2xl border border-brand-rose/20 overflow-hidden shadow-sm flex flex-col hover:shadow-md transition w-full mx-auto">
                         <img src="${p.img}" alt="${p.name}" class="w-full h-40 sm:h-44 object-cover">
                         <div class="p-4 flex flex-col flex-grow">
                             <div class="flex justify-between items-start mb-2 gap-2">
